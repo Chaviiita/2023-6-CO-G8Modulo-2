@@ -1,7 +1,7 @@
 from pygame.sprite import Sprite
 import pygame
 
-from game.utils.constants import SCREEN_WIDTH, SPACESHIP
+from game.utils.constants import SCREEN_WIDTH, SPACESHIP, SCREEN_HEIGHT
 
 class Spaceship(Sprite):
     SHIP_WIDTH = 40
@@ -25,6 +25,10 @@ class Spaceship(Sprite):
             self.move_up()
         if user_input[pygame.K_DOWN]:
             self.move_down()
+        if self.rect.x <= 0:
+            self.teleport_x_r()
+        if self.rect.x > SCREEN_WIDTH:
+            self.teleport_x_l()
 
     def draw(self, screen):
         screen.blit(self.image,(self.rect.x, self.rect.y))
@@ -36,11 +40,17 @@ class Spaceship(Sprite):
         self.rect.x += self.SHIP_SPEED
 
     def move_up(self):
-        self.rect.y -= self.SHIP_SPEED
+        if self.rect.y > 80:
+            self.rect.y -= self.SHIP_SPEED
+        else: self.rect.y -= 0
 
     def move_down(self):
-        self.rect.y += self.SHIP_SPEED
+        if self.rect.y < (SCREEN_HEIGHT - self.SHIP_HEIGHT):
+            self.rect.y += self.SHIP_SPEED
+        else: self.rect.y += 0
 
-    def teleport(self):
-        if self.rect.x <= 0:
-            self.rect.x =
+    def teleport_x_r(self):
+        self.rect.x += SCREEN_WIDTH
+
+    def teleport_x_l(self):
+        self.rect.x -=  SCREEN_WIDTH
