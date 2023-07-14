@@ -40,3 +40,7 @@ class Spaceship(Sprite):
 
     def move_down(self):
         self.rect.y += self.SHIP_SPEED
+
+    def teleport(self):
+        if self.rect.x <= 0:
+            self.rect.x =
