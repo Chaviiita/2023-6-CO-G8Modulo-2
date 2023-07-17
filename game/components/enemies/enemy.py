@@ -2,7 +2,7 @@ import random
 import pygame
 from pygame.sprite import Sprite
 
-from game.utils.constants import ENEMY_1, SCREEN_HEIGHT, SCREEN_WIDTH
+from game.utils.constants import ENEMY_LIST, SCREEN_HEIGHT, SCREEN_WIDTH
 
 class Enemy(Sprite):
     SHIP_WIDTH = 40
@@ -13,7 +13,7 @@ class Enemy(Sprite):
     SPEED_X = 5
     MOV_X = {0: 'left', 1: 'right'}
     def __init__(self):
-        self.image = ENEMY_1
+        self.image = ENEMY_LIST[random.randint(0,1)]
         self.image = pygame.transform.scale(self.image,(self.SHIP_WIDTH, self.SHIP_WIDTH))
         self.rect = self.image.get_rect()
         self.rect.x = self.X_POS[random.randint(0,10)]

@@ -1,3 +1,4 @@
+import time
 from game.components.enemies.enemy import Enemy
 from game.components.enemies.enemy2 import Enemy2
 
@@ -5,7 +6,7 @@ import random
 class EnemyManager:
     def __init__(self):
         self.enemies = []
-        self.enemy_list = {0: Enemy(), 1: Enemy2()}
+        #self.enemy_list = {0: Enemy(), 1: Enemy2()}
 
     def update(self):
         self.add_enemy()
@@ -17,5 +18,7 @@ class EnemyManager:
             enemy.draw(screen)
 
     def add_enemy(self):
-        if len (self.enemies)<1:
-            self.enemies.append(self.enemy_list[random.randint(0,1)])
+        if len (self.enemies)<2:
+            enemy = Enemy()
+            self.enemies.append(enemy)
+        time.sleep(3) 
