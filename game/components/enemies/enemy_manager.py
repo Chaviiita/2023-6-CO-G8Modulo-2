@@ -21,4 +21,4 @@ class EnemyManager:
         if len (self.enemies)<2:
             enemy = Enemy()
             self.enemies.append(enemy)
-        time.sleep(3) 
+        #time.sleep(0.5) 
